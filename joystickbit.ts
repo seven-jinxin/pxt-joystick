@@ -1,14 +1,11 @@
-
 /**
- * Use this file to define custom functions and blocks.
- * Read more at https://makecode.microbit.org/blocks/custom
+ * ElecFreaks 家 Joystick:bit V2 遥控手柄驱动模块
  */
-
-
-
 
 //% weight=0 color=#0fbc11  icon="\uf11b" block="Joystickbit"
 namespace joystickbit {
+
+    let _radioGroup: number = 0
 
     export enum JoystickBitPin {
         //% block="C"
@@ -39,8 +36,11 @@ namespace joystickbit {
     /**
     * initialization joystick:bit
     */
-    //% blockId=initJoystickBit block="initialization joystick:bit"
-    export function initJoystickBit(): void {
+    //% blockId=initJoystickBit block="initialization joystick:bit, Radio Group $radioGroup"
+    //% radioGroup.min=0 radioGroup.max=255 radioGroup.defl=1
+    export function initJoystickBit(radioGroup: number = 1): void {
+        _radioGroup = radioGroup
+        radio.setGroup(_radioGroup)
         pins.digitalWritePin(DigitalPin.P0, 0)
         pins.setPull(DigitalPin.P12, PinPullMode.PullUp)
         pins.setPull(DigitalPin.P13, PinPullMode.PullUp)
@@ -58,7 +58,6 @@ namespace joystickbit {
     }
 
 
-
     /**
     * Registers code to run when a joystick:bit event is detected.
     */
@@ -66,7 +65,6 @@ namespace joystickbit {
     export function onButtonEvent(button: JoystickBitPin, event: ButtonType, handler: Action): void {
         pins.onPulsed(<number>button, <number>event, handler);
     }
-
 
 
     /**
@@ -83,8 +81,6 @@ namespace joystickbit {
     }
 
 
-
-
     /**
     * vibration motor
     * @param time describe parameter here, eg: 100
@@ -95,15 +91,6 @@ namespace joystickbit {
         basic.pause(time)
         pins.digitalWritePin(DigitalPin.P16, 1)
     }
-
-
-
-
-
-
-
-
-
 
 }
  

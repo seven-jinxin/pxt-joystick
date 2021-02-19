@@ -8,7 +8,7 @@
     "joystickbit.rockerType.Y|block": "Y轴",
     "joystickbit.ButtonType.down|block": "按下",
     "joystickbit.ButtonType.up|block": "松开",
-    "joystickbit.initJoystickBit|block": "初始化手柄",
+    "joystickbit.initJoystickBit|block": "初始化手柄 ||, 无线组 $radioGroup",
     "joystickbit.getButton|block":"按键 %button 被按下",
     "joystickbit.onButtonEvent|block":"当按键 %button| %event",
     "joystickbit.getRockerValue|block":"摇杆 %rocker 的值",
